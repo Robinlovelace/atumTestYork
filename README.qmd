@@ -6,6 +6,7 @@ format: gfm
 ```{r}
 #| include: false
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
 ```
 
 The aim of this repo is to showcase ways of generating evidence to support strategic active network planning tools in England and beyond.
@@ -22,8 +23,35 @@ We will cover input datasets, processing steps, and outputs.
 remotes::install_cran("pct")
 ```
 
+## Zone data
+
+Zone data is available at many geographic levels, including large zones (e.g. MSOAs) and small zones (e.g. Output Areas).
+MSOAs representing York are shown below.
+
+```{r}
+zones = pct::get_pct_zones(region = "north-yorkshire", geography = "msoa")
+zones = zones |>
+  filter(lad_name == "York")
+zones |>
+  transmute(active_trips = bicycle + foot) |>
+  plot()
+```
+
 ## Origin destination data
 
+OD data has the following structure:
+
+```{r}
+if(file.exists("od_national.csv")) {
+    od_national = readr::read_csv("od_national.csv")
+} else {
+    od_national = pct::get_od()
+    readr::write_csv(od_national, "od_national.csv")
+}
+od_national |>
+  slice(seq(10)) |>
+  knitr::kable()
+```
 
 ## Data on origins and destinations
 
