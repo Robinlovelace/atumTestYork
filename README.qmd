@@ -1,0 +1,17 @@
+---
+format: gfm
+# format: html
+---
+
+The aim of this repo is to showcase ways of generating evidence to support strategic active network planning tools in England and beyond.
+
+The intention is to provide language agnostic description of input datasets processes and functions for generating estimates of active travel uptake down to the street level.
+
+```{r}
+
+```
+
+
+```{python}
+import os
+```
