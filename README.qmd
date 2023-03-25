@@ -6,12 +6,32 @@ format: gfm
 The aim of this repo is to showcase ways of generating evidence to support strategic active network planning tools in England and beyond.
 
 The intention is to provide language agnostic description of input datasets processes and functions for generating estimates of active travel uptake down to the street level.
+It will make use of some of the same input datasets that are used in the Propensity to Cycle Tool (PCT).
+For full reproducibility, the code in this repo is developed in a Docker container using the [.devcontainer.json](https://containers.dev/implementors/json_reference/) format.
+
+We will cover input datasets, processing steps, and outputs.
+
+# Input datasets
 
 ```{r}
-
+remotes::install_cran("pct")
 ```
 
+# Processing steps
 
-```{python}
-import os
-```
+## Desire line generation
+
+## Trip generation
+
+## Jittering
+
+## Routing
+
+## Update functions
+
+## Route network generation
+
+## Visualisation
+
+# Outputs
+
