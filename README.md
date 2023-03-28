@@ -48,14 +48,8 @@ OD data has the following structure:
 This dataset was extracted from the following open access endpoint:
 https://s3-eu-west-1.amazonaws.com/statistics.digitalresources.jisc.ac.uk/dkan/files/FLOW/wu03ew_v2/wu03ew_v2.zip
 
-The OD dataset can be visualised in a more policy-relevant way as
-follows (see `output/desire_lines.geojson`):
-
-![](README_files/figure-commonmark/desirelines-1.png)
-
-Clearly this is an oversimplification. The section on ‘jittering’
-demonstrates how disaggregation and setting weighted random start and
-end points can lead to more realistic desire lines and route networks.
+The OD dataset can be visualised in a more policy-relevant way, as
+illustrated in the next section.
 
 ## Data on origins and destinations
 
@@ -73,15 +67,56 @@ this repo, something that may change in the future.
 
 ## Desire line generation
 
+OD data can be effectively represented as desire lines, as follows (see
+`output/desire_lines.geojson`):
+
+![](README_files/figure-commonmark/desirelines-1.png)
+
+Clearly this is an oversimplification. The section on ‘jittering’
+demonstrates how disaggregation and setting weighted random start and
+end points can lead to more realistic desire lines and route networks.
+
 ## Trip generation
+
+Trip generation is the process of estimating the number of trips between
+origins and destinations. It can be done using spatial interaction
+models.
 
 ## Jittering
 
+Jittering, sometimes combined with disaggregation of desire lines
+representing many trips (above a threshold number of trips that can be
+set by the developer iteratively) distributes start and end points more
+evenly across origin and destination zones.
+
 ## Routing
 
-## Update functions
+The outcome of routing the desire lines shown above is shown below.
+
+The routes illustrated in the figure above and saved in
+`routes_full.geojson` in the repo’s releases took around 4 minutes to
+calculate for 576 using OSRM’s public facing instance. That works out at
+around 0.4166667, not very fast, we can surely do better!
+
+Another issue with the routes dataset represented below is that there is
+only a single geometry and set of features for the entirety of each
+route: segment level outputs from routing engines are more policy
+relevent.
+
+![](README_files/figure-commonmark/unnamed-chunk-11-1.png)
+
+## Uptake functions
+
+Uptake functions model change in transport behaviour. They can be
+combined with scenarios representing changes in travel demand.
 
 ## Route network generation
+
+In the plot of routes above there are many overlapping lines. To
+overcome this problem the ‘overline’ function can be used to generate a
+cohesive route network. The results are shown below.
+
+![](README_files/figure-commonmark/unnamed-chunk-12-1.png)
 
 ## Visualisation
 
