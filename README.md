@@ -15,6 +15,10 @@ We will cover input datasets, processing steps, and outputs.
 
 # Input datasets
 
+The input datasets were extracted from the Propensity to Cycle Tool and
+underlying datasets. Small input datasets are saved in the `input/`
+folder of this repo.
+
 ## Zone data
 
 Zone data is available at many geographic levels, including large zones
@@ -27,18 +31,21 @@ York are shown below.
 
 OD data has the following structure:
 
-| geo_code1 | geo_code2 |  all | from_home | light_rail | train | bus | taxi | motorbike | car_driver | car_passenger | bicycle | foot | other | geo_name1          | geo_name2                | la_1           | la_2                 |
-|:----------|:----------|-----:|----------:|-----------:|------:|----:|-----:|----------:|-----------:|--------------:|--------:|-----:|------:|:-------------------|:-------------------------|:---------------|:---------------------|
-| E02000001 | E02000001 | 1506 |         0 |         73 |    41 |  32 |    9 |         1 |          8 |             1 |      33 | 1304 |     4 | City of London 001 | City of London 001       | City of London | City of London       |
-| E02000001 | E02000014 |    2 |         0 |          2 |     0 |   0 |    0 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barking and Dagenham 013 | City of London | Barking and Dagenham |
-| E02000001 | E02000016 |    3 |         0 |          1 |     0 |   2 |    0 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barking and Dagenham 015 | City of London | Barking and Dagenham |
-| E02000001 | E02000025 |    1 |         0 |          0 |     1 |   0 |    0 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barnet 002               | City of London | Barnet               |
-| E02000001 | E02000028 |    1 |         0 |          0 |     0 |   0 |    0 |         0 |          1 |             0 |       0 |    0 |     0 | City of London 001 | Barnet 005               | City of London | Barnet               |
-| E02000001 | E02000051 |    1 |         0 |          1 |     0 |   0 |    0 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barnet 028               | City of London | Barnet               |
-| E02000001 | E02000053 |    2 |         0 |          2 |     0 |   0 |    0 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barnet 030               | City of London | Barnet               |
-| E02000001 | E02000057 |    1 |         0 |          1 |     0 |   0 |    0 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barnet 034               | City of London | Barnet               |
-| E02000001 | E02000058 |    1 |         0 |          0 |     0 |   0 |    0 |         0 |          0 |             0 |       0 |    1 |     0 | City of London 001 | Barnet 035               | City of London | Barnet               |
-| E02000001 | E02000059 |    1 |         0 |          0 |     0 |   0 |    1 |         0 |          0 |             0 |       0 |    0 |     0 | City of London 001 | Barnet 036               | City of London | Barnet               |
+| geo_code1 | geo_code2 | all | from_home | light_rail | train | bus | taxi | motorbike | car_driver | car_passenger | bicycle | foot | other | geo_name1 | geo_name2 | la_1 | la_2 |
+|:----------|:----------|----:|----------:|-----------:|------:|----:|-----:|----------:|-----------:|--------------:|--------:|-----:|------:|:----------|:----------|:-----|:-----|
+| E02002772 | E02002772 | 365 |         0 |          0 |     2 |   8 |    0 |         2 |        147 |            14 |      41 |  150 |     1 | York 001  | York 001  | York | York |
+| E02002772 | E02002773 |  27 |         0 |          0 |     0 |   1 |    0 |         0 |         20 |             1 |       2 |    2 |     1 | York 001  | York 002  | York | York |
+| E02002772 | E02002774 |  18 |         0 |          0 |     1 |   0 |    0 |         0 |         15 |             2 |       0 |    0 |     0 | York 001  | York 003  | York | York |
+| E02002772 | E02002775 |  69 |         0 |          0 |     0 |   9 |    0 |         1 |         51 |             4 |       4 |    0 |     0 | York 001  | York 004  | York | York |
+| E02002772 | E02002776 | 253 |         0 |          0 |     1 |  32 |    0 |         7 |        162 |            28 |      20 |    3 |     0 | York 001  | York 005  | York | York |
+| E02002772 | E02002777 | 165 |         0 |          0 |     0 |  10 |    0 |         0 |        136 |            11 |       8 |    0 |     0 | York 001  | York 006  | York | York |
+| E02002772 | E02002778 |  50 |         0 |          0 |     0 |   2 |    0 |         0 |         41 |             3 |       4 |    0 |     0 | York 001  | York 007  | York | York |
+| E02002772 | E02002779 |  42 |         0 |          0 |     0 |   0 |    0 |         0 |         39 |             1 |       1 |    1 |     0 | York 001  | York 008  | York | York |
+| E02002772 | E02002780 | 122 |         0 |          0 |     0 |  10 |    0 |         4 |         86 |             9 |      11 |    2 |     0 | York 001  | York 009  | York | York |
+| E02002772 | E02002781 | 124 |         0 |          0 |     0 |  10 |    2 |         4 |         89 |             6 |      13 |    0 |     0 | York 001  | York 010  | York | York |
+
+This dataset was extracted from the following open access endpoint:
+https://s3-eu-west-1.amazonaws.com/statistics.digitalresources.jisc.ac.uk/dkan/files/FLOW/wu03ew_v2/wu03ew_v2.zip
 
 ## Data on origins and destinations
 

@@ -19,6 +19,9 @@ We will cover input datasets, processing steps, and outputs.
 
 # Input datasets
 
+The input datasets were extracted from the Propensity to Cycle Tool and underlying datasets.
+Small input datasets are saved in the `input/` folder of this repo.
+
 ```{r}
 remotes::install_cran("pct")
 ```
@@ -37,21 +40,42 @@ zones |>
   plot()
 ```
 
+```{r}
+#| echo: false
+#| eval: false
+sf::write_sf(zones, "input/zones.geojson")
+```
+
+
 ## Origin destination data
 
 OD data has the following structure:
 
 ```{r}
+#| echo: false
+#| eval: false
 if(file.exists("od_national.csv")) {
     od_national = readr::read_csv("od_national.csv")
 } else {
     od_national = pct::get_od()
     readr::write_csv(od_national, "od_national.csv")
 }
-od_national |>
+od_york = od_national |>
+  filter(geo_code1 %in% zones$geo_code) |>
+  filter(geo_code2 %in% zones$geo_code)
+write_csv(od_york, "input/od.csv")
+```
+
+
+```{r}
+od_york = read_csv("input/od.csv")
+od_york |>
   slice(seq(10)) |>
   knitr::kable()
 ```
+
+This dataset was extracted from the following open access endpoint: https://s3-eu-west-1.amazonaws.com/statistics.digitalresources.jisc.ac.uk/dkan/files/FLOW/wu03ew_v2/wu03ew_v2.zip
+
 
 ## Data on origins and destinations
 
