@@ -2,11 +2,12 @@
 The aim of this repo is to showcase ways of generating evidence to
 support strategic active network planning tools in England and beyond.
 
-The intention is to provide language agnostic description of input
-datasets processes and functions for generating estimates of active
-travel uptake down to the street level. It will make use of some of the
-same input datasets that are used in the Propensity to Cycle Tool (PCT).
-For full reproducibility, the code in this repo is developed in a Docker
+What follows is a language agnostic but fully reproducible (with R, see
+README.qmd for code) description of input datasets, processes and
+functions for generating estimates of active travel uptake down to the
+street level. It will make use of some of the same input datasets that
+are used in the Propensity to Cycle Tool (PCT). For full
+reproducibility, the code in this repo is developed in a Docker
 container using the
 [.devcontainer.json](https://containers.dev/implementors/json_reference/)
 format.
@@ -47,6 +48,15 @@ OD data has the following structure:
 This dataset was extracted from the following open access endpoint:
 https://s3-eu-west-1.amazonaws.com/statistics.digitalresources.jisc.ac.uk/dkan/files/FLOW/wu03ew_v2/wu03ew_v2.zip
 
+The OD dataset can be visualised in a more policy-relevant way as
+follows (see `output/desire_lines.geojson`):
+
+![](README_files/figure-commonmark/desirelines-1.png)
+
+Clearly this is an oversimplification. The section on ‘jittering’
+demonstrates how disaggregation and setting weighted random start and
+end points can lead to more realistic desire lines and route networks.
+
 ## Data on origins and destinations
 
 A key dataset type for simulating trips not covered by available OD data
@@ -55,6 +65,9 @@ population estimates) and ‘trip attractors’. These can be obtained from
 OSM. These datasets typically have pont and polygon geometries and
 numerous features that can feed into trip generation models, a
 subsection of the enxt section.
+
+There are currently datasets representing origins and destinations in
+this repo, something that may change in the future.
 
 # Processing steps
 
